@@ -1,0 +1,117 @@
+apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.3"
+    defaultConfig {
+        applicationId "me.bitfrom.githubsearch"
+        minSdkVersion 16
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    dexOptions {
+        maxProcessCount 4
+        javaMaxHeapSize "4g"
+        preDexLibraries
+    }
+}
+
+dependencies {
+    //Support
+    final supportVer = '25.3.1'
+    //ConstraintLayout
+    final constraintLayoutVer = '1.0.2'
+    //Dagger 2
+    final daggerVer = '2.9'
+    //RxJava
+    final rxJavaVer = '2.1.1'
+    final rxAndroidVer = '2.0.1'
+    //Arch components(Room)
+    final archComponentsVer = "1.0.0-alpha3"
+    //OkHttp
+    final okHttpVer = '3.8.0'
+    //Retrofit
+    final retrofitVer = '2.3.0'
+    final gsonVer = '2.8.0'
+    final autoValueGsonVer = '0.4.6'
+    //AutoValue
+    final autoValueParcelVer = '0.2.5'
+    //Timber
+    final timberVer = '4.5.1'
+    //Stetho
+    final stethoVer = '1.5.0'
+    //LeakCanary
+    final leakCanaryVer = '1.5'
+    //Tests
+    final espressoVer = '2.2.2'
+    final jUnitVer = '4.12'
+
+    compile "com.android.support:appcompat-v7:$supportVer"
+    compile "com.android.support:design:$supportVer"
+    compile "com.android.support:preference-v7:$supportVer"
+    compile "com.android.support:percent:$supportVer"
+    compile "com.android.support.constraint:constraint-layout:$constraintLayoutVer"
+
+    //Dagger 2
+    compile "com.google.dagger:dagger:$daggerVer"
+    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVer"
+
+    //RxJava 2
+    compile "io.reactivex.rxjava2:rxjava:$rxJavaVer"
+    compile "io.reactivex.rxjava2:rxandroid:$rxAndroidVer"
+
+    //Database
+    compile "android.arch.lifecycle:runtime:$archComponentsVer"
+    compile "android.arch.lifecycle:extensions:$archComponentsVer"
+    annotationProcessor "android.arch.lifecycle:compiler:$archComponentsVer"
+    compile "android.arch.persistence.room:runtime:$archComponentsVer"
+    annotationProcessor "android.arch.persistence.room:compiler:$archComponentsVer"
+    compile "android.arch.persistence.room:rxjava2:$archComponentsVer"
+
+    //Networking
+    compile "com.squareup.okhttp3:okhttp:$okHttpVer"
+    compile "com.squareup.okhttp3:logging-interceptor:$okHttpVer"
+    compile "com.squareup.retrofit2:retrofit:$retrofitVer"
+    compile "com.squareup.retrofit2:adapter-rxjava2:$retrofitVer"
+    //Gson
+    compile "com.google.code.gson:gson:$gsonVer"
+    compile "com.squareup.retrofit2:converter-gson:$retrofitVer"
+    //AutoValueGson
+    annotationProcessor "com.ryanharter.auto.value:auto-value-gson:$autoValueGsonVer"
+    provided "com.ryanharter.auto.value:auto-value-gson:$autoValueGsonVer"
+
+    //AutoValue
+    annotationProcessor "com.ryanharter.auto.value:auto-value-parcel:$autoValueParcelVer"
+    provided "com.ryanharter.auto.value:auto-value-parcel:$autoValueParcelVer"
+
+    //Developer
+    compile "com.jakewharton.timber:timber:$timberVer"
+    compile "com.facebook.stetho:stetho:$stethoVer"
+    compile "com.facebook.stetho:stetho-okhttp3:$stethoVer"
+    debugCompile "com.squareup.leakcanary:leakcanary-android:$leakCanaryVer"
+    releaseCompile "com.squareup.leakcanary:leakcanary-android-no-op:$leakCanaryVer"
+    testCompile "com.squareup.leakcanary:leakcanary-android-no-op:$leakCanaryVer"
+
+    //Tests
+    androidTestCompile("com.android.support.test.espresso:espresso-core:$espressoVer", {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    testCompile "junit:junit:$jUnitVer"
+    testCompile "com.squareup.okhttp3:mockwebserver:$okHttpVer"
+}
