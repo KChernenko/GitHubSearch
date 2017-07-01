@@ -11,7 +11,7 @@ import me.bitfrom.githubsearch.injection.ActivityScope;
 import me.bitfrom.githubsearch.injection.ApplicationContext;
 
 /**
- * <p>.</p>
+ * <p>Network checker utility class.</p>
  *
  * @author const
  * @version 1

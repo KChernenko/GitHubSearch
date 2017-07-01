@@ -34,6 +34,11 @@ public class ApplicationModule {
         this.application = application;
     }
 
+    /**
+     * Provides application instance for internal needs.
+     *
+     * @return the {@link Application} instance.
+     **/
     @Provides @NonNull
     Application providesApplication() {
         return application;
@@ -62,9 +67,14 @@ public class ApplicationModule {
         return Room.databaseBuilder(context, DbHelper.class, ConstantsHolder.DATABASE_NAME).build();
     }
 
+    /**
+     * Provides mapper object, that could map one type of the repositories data to another.
+     *
+     * @return the {@link RepositoryMapper} instance.
+     **/
     @Provides
     @NonNull
-    RepositoryMapper providesResponseMapper() {
+    RepositoryMapper providesRepositoryMapper() {
         return new RepositoryMapper();
     }
 
