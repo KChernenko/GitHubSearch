@@ -22,8 +22,8 @@ public class RepositoryEntity {
     @ColumnInfo(name = "name")
     private String name;
 
-    @ColumnInfo(name = "full_name")
-    private String fullName;
+    @ColumnInfo(name = "language")
+    private String language;
 
     @ColumnInfo(name = "description")
     private String description;
@@ -36,6 +36,9 @@ public class RepositoryEntity {
 
     @Embedded
     private Owner owner;
+
+    @ColumnInfo(name = "time_stamp")
+    private Long timeStamp;
 
     public String getRepositoryUrl() {
         return repositoryUrl;
@@ -53,12 +56,20 @@ public class RepositoryEntity {
         this.name = name;
     }
 
-    public String getFullName() {
-        return fullName;
+    public String getLanguage() {
+        return language;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Integer getStars() {
@@ -85,6 +96,14 @@ public class RepositoryEntity {
         this.owner = owner;
     }
 
+    public Long getTimeStamp() {
+        return timeStamp;
+    }
+
+    public void setTimeStamp(Long timeStamp) {
+        this.timeStamp = timeStamp;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -95,13 +114,14 @@ public class RepositoryEntity {
         if (repositoryUrl != null ? !repositoryUrl.equals(that.repositoryUrl) : that.repositoryUrl != null)
             return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        if (fullName != null ? !fullName.equals(that.fullName) : that.fullName != null)
+        if (language != null ? !language.equals(that.language) : that.language != null)
             return false;
         if (description != null ? !description.equals(that.description) : that.description != null)
             return false;
         if (stars != null ? !stars.equals(that.stars) : that.stars != null) return false;
         if (forks != null ? !forks.equals(that.forks) : that.forks != null) return false;
-        return owner != null ? owner.equals(that.owner) : that.owner == null;
+        if (owner != null ? !owner.equals(that.owner) : that.owner != null) return false;
+        return timeStamp != null ? timeStamp.equals(that.timeStamp) : that.timeStamp == null;
 
     }
 
@@ -109,11 +129,12 @@ public class RepositoryEntity {
     public int hashCode() {
         int result = repositoryUrl != null ? repositoryUrl.hashCode() : 0;
         result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (fullName != null ? fullName.hashCode() : 0);
+        result = 31 * result + (language != null ? language.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
         result = 31 * result + (stars != null ? stars.hashCode() : 0);
         result = 31 * result + (forks != null ? forks.hashCode() : 0);
         result = 31 * result + (owner != null ? owner.hashCode() : 0);
+        result = 31 * result + (timeStamp != null ? timeStamp.hashCode() : 0);
         return result;
     }
 
@@ -122,11 +143,12 @@ public class RepositoryEntity {
         return "RepositoryEntity{" +
                 "repositoryUrl='" + repositoryUrl + '\'' +
                 ", name='" + name + '\'' +
-                ", fullName='" + fullName + '\'' +
+                ", language='" + language + '\'' +
                 ", description='" + description + '\'' +
                 ", stars=" + stars +
                 ", forks=" + forks +
                 ", owner=" + owner +
+                ", timeStamp=" + timeStamp +
                 '}';
     }
 }

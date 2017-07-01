@@ -1,0 +1,72 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "3cc830ef56fb1f5ec31e4fbc79fb7b34",
+    "entities": [
+      {
+        "tableName": "repositories",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`rep_url` TEXT, `name` TEXT, `language` TEXT, `description` TEXT, `stars` INTEGER, `forks` INTEGER, `time_stamp` INTEGER, `owner_id` INTEGER, `owner_name` TEXT, PRIMARY KEY(`rep_url`))",
+        "fields": [
+          {
+            "fieldPath": "repositoryUrl",
+            "columnName": "rep_url",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "language",
+            "columnName": "language",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "stars",
+            "columnName": "stars",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "forks",
+            "columnName": "forks",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "timeStamp",
+            "columnName": "time_stamp",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "owner.ownerId",
+            "columnName": "owner_id",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "owner.ownerName",
+            "columnName": "owner_name",
+            "affinity": "TEXT"
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "rep_url"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"3cc830ef56fb1f5ec31e4fbc79fb7b34\")"
+    ]
+  }
+}

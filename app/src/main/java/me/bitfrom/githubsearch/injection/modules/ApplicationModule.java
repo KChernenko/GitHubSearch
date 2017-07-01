@@ -1,14 +1,21 @@
 package me.bitfrom.githubsearch.injection.modules;
 
 import android.app.Application;
+import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.support.annotation.NonNull;
+
+import com.google.gson.Gson;
 
 import dagger.Module;
 import dagger.Provides;
 import me.bitfrom.githubsearch.core.MainRepository;
 import me.bitfrom.githubsearch.core.MainRepositoryImpl;
+import me.bitfrom.githubsearch.core.mappers.RepositoryMapper;
+import me.bitfrom.githubsearch.core.network.GitHubApi;
+import me.bitfrom.githubsearch.core.storage.DbHelper;
 import me.bitfrom.githubsearch.injection.ApplicationContext;
+import me.bitfrom.githubsearch.utils.ConstantsHolder;
 
 /**
  * <p>Module for instantiation application-related objects.</p>
@@ -27,10 +34,15 @@ public class ApplicationModule {
         this.application = application;
     }
 
+    @Provides @NonNull
+    Application providesApplication() {
+        return application;
+    }
+
     /**
      * Provides application-related context.
      *
-     * @return the context
+     * @return the {@link Context} instance.
      **/
     @Provides
     @NonNull
@@ -40,13 +52,36 @@ public class ApplicationModule {
     }
 
     /**
+     * Provides database-layer.
+     *
+     * @return the {@link DbHelper} instance.
+     **/
+    @Provides
+    @NonNull
+    DbHelper providesDbHelper(@NonNull @ApplicationContext Context context) {
+        return Room.databaseBuilder(context, DbHelper.class, ConstantsHolder.DATABASE_NAME).build();
+    }
+
+    @Provides
+    @NonNull
+    RepositoryMapper providesResponseMapper() {
+        return new RepositoryMapper();
+    }
+
+    /**
      * Provides repository object - business logic access point
+     *
+     * @param dbHelper database access layer object.
+     * @param gitHubApi server access layer object.
      *
      * @return {@link MainRepository} implementation.
      **/
     @Provides
     @NonNull
-    MainRepository providesMainRepository() {
-        return new MainRepositoryImpl();
+    MainRepository providesMainRepository(@NonNull Gson gson,
+                                          @NonNull DbHelper dbHelper,
+                                          @NonNull GitHubApi gitHubApi,
+                                          @NonNull RepositoryMapper repositoryMapper) {
+        return new MainRepositoryImpl(gson, dbHelper, gitHubApi, repositoryMapper);
     }
 }

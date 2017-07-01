@@ -12,16 +12,16 @@ import android.arch.persistence.room.ColumnInfo;
 public class Owner {
 
     @ColumnInfo(name = "owner_id")
-    private Long ownerId;
+    private Integer ownerId;
 
     @ColumnInfo(name = "owner_name")
     private String ownerName;
 
-    public Long getOwnerId() {
+    public Integer getOwnerId() {
         return ownerId;
     }
 
-    public void setOwnerId(Long ownerId) {
+    public void setOwnerId(Integer ownerId) {
         this.ownerId = ownerId;
     }
 
@@ -53,7 +53,7 @@ public class Owner {
 
     @Override
     public String toString() {
-        return "Owner{" +
+        return "OwnerModel{" +
                 "ownerId=" + ownerId +
                 ", ownerName='" + ownerName + '\'' +
                 '}';

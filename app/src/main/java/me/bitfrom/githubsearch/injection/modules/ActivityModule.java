@@ -31,8 +31,7 @@ public class ActivityModule {
      *
      * @return the context
      */
-    @Provides
-    @NonNull
+    @Provides @NonNull
     @ActivityContext
     Context providesActivityContext() {
         return activity;

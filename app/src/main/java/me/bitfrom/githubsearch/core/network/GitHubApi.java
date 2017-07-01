@@ -2,7 +2,7 @@ package me.bitfrom.githubsearch.core.network;
 
 
 import io.reactivex.Flowable;
-import me.bitfrom.githubsearch.core.network.models.GitHubResult;
+import me.bitfrom.githubsearch.core.network.models.GitHubResultModel;
 import retrofit2.Response;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
@@ -16,8 +16,8 @@ import retrofit2.http.Query;
  */
 public interface GitHubApi {
 
-    @GET("search/repositories/")
-    Flowable<Response<GitHubResult>> searchRepositories(@Query("q") String query,
-                                                        @Query("sort") String sortPrincipe,
-                                                        @Query("order") String order);
+    @GET("search/repositories")
+    Flowable<Response<GitHubResultModel>> searchRepositories(@Query("q") String query,
+                                                             @Query("sort") String sortPrincipe,
+                                                             @Query("order") String order);
 }

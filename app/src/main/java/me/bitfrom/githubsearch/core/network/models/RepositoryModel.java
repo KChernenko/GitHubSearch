@@ -1,12 +1,12 @@
 package me.bitfrom.githubsearch.core.network.models;
 
 import com.google.auto.value.AutoValue;
+import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.Gson;
 
 @AutoValue
-public abstract class ItemsItem {
+public abstract class RepositoryModel {
 
     @SerializedName("stargazers_count")
     public abstract int stargazersCount();
@@ -150,7 +150,7 @@ public abstract class ItemsItem {
     public abstract boolean hasPages();
 
     @SerializedName("owner")
-    public abstract Owner owner();
+    public abstract OwnerModel owner();
 
     @SerializedName("commits_url")
     public abstract String commitsUrl();
@@ -183,7 +183,7 @@ public abstract class ItemsItem {
     public abstract String contentsUrl();
 
     @SerializedName("mirror_url")
-    public abstract Object mirrorUrl();
+    public abstract String mirrorUrl();
 
     @SerializedName("milestones_url")
     public abstract String milestonesUrl();
@@ -218,7 +218,75 @@ public abstract class ItemsItem {
     @SerializedName("forks_count")
     public abstract int forksCount();
 
-    public static TypeAdapter<ItemsItem> typeAdapter(Gson gson) {
-        return new AutoValue_ItemsItem.GsonTypeAdapter(gson);
+    public static TypeAdapter<RepositoryModel> typeAdapter(Gson gson) {
+        return new AutoValue_RepositoryModel.GsonTypeAdapter(gson)
+                .setDefaultPushedAt("")
+                .setDefaultSubscriptionUrl("")
+                .setDefaultLanguage("")
+                .setDefaultBranchesUrl("")
+                .setDefaultIssueCommentUrl("")
+                .setDefaultLabelsUrl("")
+                .setDefaultScore(0.0)
+                .setDefaultSubscribersUrl("")
+                .setDefaultReleasesUrl("")
+                .setDefaultSvnUrl("")
+                .setDefaultId(0)
+                .setDefaultForks(0)
+                .setDefaultArchiveUrl("")
+                .setDefaultGitRefsUrl("")
+                .setDefaultForksUrl("")
+                .setDefaultStatusesUrl("")
+                .setDefaultSshUrl("")
+                .setDefaultFullName("")
+                .setDefaultSize(0)
+                .setDefaultLanguagesUrl("")
+                .setDefaultHtmlUrl("")
+                .setDefaultCollaboratorsUrl("")
+                .setDefaultCloneUrl("")
+                .setDefaultName("")
+                .setDefaultPullsUrl("")
+                .setDefaultDefaultBranch("")
+                .setDefaultHooksUrl("")
+                .setDefaultTreesUrl("")
+                .setDefaultTagsUrl("")
+                .setDefaultJsonMemberPrivate(false)
+                .setDefaultContributorsUrl("")
+                .setDefaultHasDownloads(false)
+                .setDefaultNotificationsUrl("")
+                .setDefaultOpenIssuesCount(0)
+                .setDefaultDescription("")
+                .setDefaultCreatedAt("")
+                .setDefaultWatchers(0)
+                .setDefaultKeysUrl("")
+                .setDefaultDeploymentsUrl("")
+                .setDefaultHasProjects(false)
+                .setDefaultHasWiki(false)
+                .setDefaultUpdatedAt("")
+                .setDefaultCommentsUrl("")
+                .setDefaultStargazersUrl("")
+                .setDefaultGitUrl("")
+                .setDefaultHasPages(false)
+                .setDefaultCommitsUrl("")
+                .setDefaultCompareUrl("")
+                .setDefaultGitCommitsUrl("")
+                .setDefaultBlobsUrl("")
+                .setDefaultGitTagsUrl("")
+                .setDefaultMergesUrl("")
+                .setDefaultDownloadsUrl("")
+                .setDefaultHasIssues(false)
+                .setDefaultUrl("")
+                .setDefaultContentsUrl("")
+                .setDefaultMirrorUrl("")
+                .setDefaultMilestonesUrl("")
+                .setDefaultTeamsUrl("")
+                .setDefaultFork(false)
+                .setDefaultIssuesUrl("")
+                .setDefaultEventsUrl("")
+                .setDefaultIssueEventsUrl("")
+                .setDefaultAssigneesUrl("")
+                .setDefaultOpenIssues(0)
+                .setDefaultWatchersCount(0)
+                .setDefaultHomepage("")
+                .setDefaultForksCount(0);
     }
 }

@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">GitHubSearch</string>
+
+    <!-- Main screen strings -->
+    <string name="enter_your_query_hint">Enter your query</string>
+    <string name="search_stop_btn">Stop</string>
+    <string name="search_start_btn">Search</string>
+    <string name="empty_repository_list">There are nothing to show!</string>
+    <string name="close_dialog_btn">Close</string>
+    <!-- Error strings -->
+    <string name="data_not_saved_msg">Data not cached for some reasons!</string>
+    <string name="unknown_error_msg">Something strange has happened!</string>
+    <string name="network_error_msg">Network not available!</string>
+
+    <!-- Repository item strings -->
+    <string name="rep_item_name_lbl">Name:</string>
+    <string name="rep_item_language_lbl">Language:</string>
+    <string name="rep_item_description">Description:</string>
+    <string name="rep_item_stars">Stars:</string>
+    <string name="rep_item_forks">Forks:</string>
+    <string name="rep_item_owner_name">Owner:</string>
 </resources>

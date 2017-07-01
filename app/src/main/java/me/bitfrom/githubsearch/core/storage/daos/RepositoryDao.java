@@ -1,4 +1,4 @@
-package me.bitfrom.githubsearch.core.storage;
+package me.bitfrom.githubsearch.core.storage.daos;
 
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
@@ -35,6 +35,6 @@ public interface RepositoryDao {
     /**
      * Deletes all repositories from the database.
      **/
-    @Query("DELETE FROM repositories")
-    void deleteAllRepositories();
+    @Query("DELETE FROM repositories WHERE time_stamp < :timeStamp")
+    void deleteAllRepositories(long timeStamp);
 }

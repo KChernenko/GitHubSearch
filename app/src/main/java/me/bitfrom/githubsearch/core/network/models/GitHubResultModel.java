@@ -1,13 +1,14 @@
 package me.bitfrom.githubsearch.core.network.models;
 
-import java.util.List;
 import com.google.auto.value.AutoValue;
+import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.Gson;
+
+import java.util.List;
 
 @AutoValue
-public abstract class GitHubResult{
+public abstract class GitHubResultModel {
 
 	@SerializedName("total_count")
 	public abstract int totalCount();
@@ -16,9 +17,9 @@ public abstract class GitHubResult{
 	public abstract boolean incompleteResults();
 
 	@SerializedName("items")
-	public abstract List<ItemsItem> items();
+	public abstract List<RepositoryModel> items();
 
-	public static TypeAdapter<GitHubResult> typeAdapter(Gson gson) {
-		return new AutoValue_GitHubResult.GsonTypeAdapter(gson);
+	public static TypeAdapter<GitHubResultModel> typeAdapter(Gson gson) {
+		return new AutoValue_GitHubResultModel.GsonTypeAdapter(gson);
 	}
 }

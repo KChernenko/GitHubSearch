@@ -16,6 +16,12 @@ public final class ConstantsHolder {
     public static final String CACHE_DIR_NAME = "github_http_cache";
     public static final int CACHE_SIZE = 2 * 1024 * 1024; //2 Mb
     public static final String CACHE_CONTROL_HEADER = "Cache-Control";
+    public static final String SORT_PRINCIPE_QUERY_PARAM = "stars";
+    public static final String ORDER_QUERY_PARAM = "desc";
+
+    //Database-related constants
+    public static final int DATABASE_VERSION = 1;
+    public static final String DATABASE_NAME = "github_search_db";
 
     private ConstantsHolder() {
         throw new IllegalStateException("No instances, please!");

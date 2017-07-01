@@ -1,12 +1,12 @@
 package me.bitfrom.githubsearch.core.network.models;
 
 import com.google.auto.value.AutoValue;
+import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.Gson;
 
 @AutoValue
-public abstract class Owner{
+public abstract class OwnerModel {
 
 	@SerializedName("gists_url")
 	public abstract String gistsUrl();
@@ -59,7 +59,7 @@ public abstract class Owner{
 	@SerializedName("organizations_url")
 	public abstract String organizationsUrl();
 
-	public static TypeAdapter<Owner> typeAdapter(Gson gson) {
-		return new AutoValue_Owner.GsonTypeAdapter(gson);
+	public static TypeAdapter<OwnerModel> typeAdapter(Gson gson) {
+		return new AutoValue_OwnerModel.GsonTypeAdapter(gson);
 	}
 }
