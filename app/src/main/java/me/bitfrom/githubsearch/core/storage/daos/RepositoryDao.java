@@ -33,8 +33,8 @@ public interface RepositoryDao {
     void insertRepositories(List<RepositoryEntity> repositoryEntities);
 
     /**
-     * Deletes all repositories from the database.
+     * Deletes old repositories from the database.
      **/
     @Query("DELETE FROM repositories WHERE time_stamp < :timeStamp")
-    void deleteAllRepositories(long timeStamp);
+    void deleteOldRepositories(long timeStamp);
 }

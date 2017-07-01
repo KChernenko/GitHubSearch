@@ -66,7 +66,7 @@ public class MainRepositoryImpl implements MainRepository {
                             //Inserting a new values into the database
                             dbHelper.repositoryDao().insertRepositories(valuesToInsert);
                             //Deleting the old ones
-                            dbHelper.repositoryDao().deleteAllRepositories(timeStamp);
+                            dbHelper.repositoryDao().deleteOldRepositories(timeStamp);
                             //Marking that response is successful - values are cached into the database.
                             response.setData(Boolean.TRUE);
                         } else {
