@@ -36,7 +36,7 @@ public class MainRepositoryImpl implements MainRepository {
     private final RepositoryMapper repositoryMapper;
 
     @Inject
-    public MainRepositoryImpl(@NonNull Gson gson,
+    public MainRepositoryImpl(@NonNull final Gson gson,
                               @NonNull final DbHelper dbHelper,
                               @NonNull final GitHubApi gitHubApi,
                               @NonNull final RepositoryMapper repositoryMapper) {
